@@ -1,8 +1,6 @@
 package com.exam.rentaplane.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
@@ -23,6 +21,8 @@ public class Offer extends BaseEntity{
     private LeaseType leaseType;
     @Column(nullable = false)
     private int availability;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private AirLine airLine;
 
     public Offer() {
     }
@@ -81,5 +81,13 @@ public class Offer extends BaseEntity{
 
     public void setAvailability(int availability) {
         this.availability = availability;
+    }
+
+    public AirLine getAirLine() {
+        return airLine;
+    }
+
+    public void setAirLine(AirLine airLine) {
+        this.airLine = airLine;
     }
 }

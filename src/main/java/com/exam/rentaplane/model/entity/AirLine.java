@@ -1,8 +1,8 @@
 package com.exam.rentaplane.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "airlines")
@@ -19,6 +19,10 @@ public class AirLine extends BaseEntity{
     private int yearsOfService;
     @Column(name = "rating")
     private int rating;
+    @OneToMany
+    private List<AirCraft> airCrafts;
+    @OneToMany
+    private List<Offer> offers;
 
     public AirLine() {
     }
@@ -69,5 +73,21 @@ public class AirLine extends BaseEntity{
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public List<AirCraft> getAirCrafts() {
+        return airCrafts;
+    }
+
+    public void setAirCrafts(List<AirCraft> airCrafts) {
+        this.airCrafts = airCrafts;
+    }
+
+    public List<Offer> getOffers() {
+        return offers;
+    }
+
+    public void setOffers(List<Offer> offers) {
+        this.offers = offers;
     }
 }
